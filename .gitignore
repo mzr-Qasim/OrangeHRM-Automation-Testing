@@ -1,0 +1,47 @@
+# 🔐 Environment variables (VERY IMPORTANT)
+.env
+.env.*
+*.env
+
+# 🐍 Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 📦 Virtual environment
+venv/
+env/
+ENV/
+.venv/
+
+# 📁 VS Code settings (optional)
+.vscode/
+
+# 🧪 Pytest / test cache
+.pytest_cache/
+
+# 🧾 Logs
+*.log
+
+# 📊 Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+.cache
+
+# 📦 Distribution / build files
+build/
+dist/
+*.egg-info/
+
+# 🧰 OS files
+.DS_Store
+Thumbs.db
+
+# 🔑 SSH keys (just in case)
+*.pem
+*.key
+
+# 📸 Selenium screenshots (if you store failures)
+screenshots/
+reports/
