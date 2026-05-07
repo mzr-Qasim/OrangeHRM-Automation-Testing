@@ -1,29 +1,33 @@
 import os
 from dotenv import load_dotenv
 
-from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 from pages.login_page import LoginPage
 
 load_dotenv()
 
 
-def test_login_success():
-    # 🚀 Let Selenium Manager handle Firefox + driver automatically
-    driver = webdriver.Firefox()
-    driver.maximize_window()
+def test_login_success(driver):
 
-    try:
-        page = LoginPage(driver)
-        page.open()
+    page = LoginPage(driver)
+    wait = WebDriverWait(driver, 10)
 
-        username = os.getenv("USERNAME")
-        password = os.getenv("PASSWORD")
+    page.open()
 
-        assert username and password, "Missing env variables"
+    username = os.getenv("USERNAME")
+    password = os.getenv("PASSWORD")
 
-        page.login(username, password)
+    assert username and password, "Missing env variables"
 
-        assert page.is_logged_in()
+    page.login(username, password)
 
-    finally:
-        driver.quit()
+    dashboard_element = wait.until(
+        EC.visibility_of_element_located(
+            (By.XPATH, "//h6[text()='Dashboard']")
+        )
+    )
+
+    assert dashboard_element.is_displayed()
