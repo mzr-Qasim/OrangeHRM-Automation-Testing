@@ -31,3 +31,8 @@ def test_login_success(driver):
     )
 
     assert dashboard_element.is_displayed()
+
+
+
+# PYTHONPATH=. pytest -v -s
+  
